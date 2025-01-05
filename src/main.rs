@@ -64,7 +64,7 @@ async fn example(cluster_endpoint: String) -> anyhow::Result<()> {
         println!("Result: {:?}", result);
     }
 
-    let rows = sqlx::query("SELECT * FROM owner WHERE name LIKE '%Hadethean%'")
+    let rows = sqlx::query("SELECT * FROM owner WHERE name LIKE '%d%'")
         .fetch_all(&pool)
         .await?;
 
@@ -72,6 +72,12 @@ async fn example(cluster_endpoint: String) -> anyhow::Result<()> {
     for row in iterator_rows {
         println!("Row: {:?}", row);
     }
+
+    let amount = sqlx::query("SELECT COUNT(*) FROM owner WHERE name LIKE '%d%'")
+        .fetch_one(&pool)
+        .await?;
+
+    println!("Amount: {:?}", amount);
 
     pool.close().await;
     Ok(())
