@@ -1,0 +1,27 @@
+[package]
+name = "dsql_rust_example"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+uuid = { version = "1.11.0", features = [
+    "v4",
+    "fast-rng",
+    "macro-diagnostics",
+] }
+tokio = { version = "1", features = ["full"] }
+sqlx = { version = "0.8", features = [
+    "runtime-tokio",
+    "tls-native-tls",
+    "postgres",
+    "derive",
+    "uuid",
+] }
+aws-sdk-dsql = "1.1.0"
+aws-config = "1.5.11"
+rand = "0.8.5"
+postgres = "0.19.9"
+chrono = "0.4.39"
+anyhow = "1.0.95"
+random_name_generator = "0.3.6"
+dotenv = "0.15.0"
